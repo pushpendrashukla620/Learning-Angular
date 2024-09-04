@@ -25,7 +25,7 @@ export class UserComponent {
 
 
   onSelectUser(){
-    this,this.select.emit(this.id)
+    this.select.emit(this.id)
   }
 
 }
