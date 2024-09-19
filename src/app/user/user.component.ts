@@ -12,20 +12,22 @@ const randomIndex=Math.floor(Math.random()*DUMMY_USERS.length)
 })
 export class UserComponent {
 
-  @Input({required:true}) id!:string;
-  @Input() avatar!: string;      //1.@Input will mark this property settable from outside  2. !: tells ts that this value will be definitely set in future
-  @Input() name!:string;
+  @Input({ required: true }) user!: {
+    id: string;
+    avatar: string;
+    name: string;
+  };
 
   @Output() select=new EventEmitter();
 
   get imagePath(){
-    return "assets/users/"+this.avatar;
+    return "assets/users/"+this.user.avatar;
   }
 
 
 
   onSelectUser(){
-    this.select.emit(this.id)
+    this.select.emit(this.user.id)
   }
 
 }
