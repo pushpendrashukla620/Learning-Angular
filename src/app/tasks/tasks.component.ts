@@ -44,5 +44,9 @@ export class TasksComponent {
     
     return this.tasks.filter((task)=>task.userId===this.userId);
   }
+  onCompleteEvent(id:string){
+    console.log(id);
+    this.tasks=this.tasks.filter((task)=>task.id!==id);
+  }
 
 }
