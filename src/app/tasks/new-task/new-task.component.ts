@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { Component, computed, EventEmitter, Output, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { newTaskData } from '../task/task.model';
+
+
 
 @Component({
   selector: 'app-new-task',
@@ -8,16 +11,25 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })
+
 export class NewTaskComponent {
-onSubmit() {
-  throw new Error('Method not implemented.');
-}
+  
   @Output() cancel =new EventEmitter();
+  @Output() addTask=new EventEmitter<newTaskData>();
   enteredTitle=signal('');
-  entereSummary=signal('');
+  enteredSummary=signal('');
   enteredDate=signal('');
 
   onCancel(){
     this.cancel.emit();
+  }
+  onSubmit() {
+    this.addTask.emit({
+      title: this.enteredTitle(),   // Access signal value with ()
+      summary: this.enteredSummary(),
+      date: this.enteredDate()
+
+
+    })
   }
 }
