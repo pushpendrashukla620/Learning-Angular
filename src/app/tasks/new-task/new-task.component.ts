@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
+onSubmit() {
+  throw new Error('Method not implemented.');
+}
   @Output() cancel =new EventEmitter();
   enteredTitle=signal('');
   entereSummary=signal('');
